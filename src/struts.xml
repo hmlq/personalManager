@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="test" namespace="/" extends="struts-default">
+		<action name="login" class="loginAction">
+			<result>/welcome.jsp</result>
+			<result name="error">/index.jsp</result>
+		</action>
+
+		<action name="register" class="registerAction">
+			<result>/index.jsp</result>
+		</action>
+
+		<action name="userAction1" class="userAction">
+			<result>/personalMessage.jsp</result>
+		</action>
+
+		<!-- 获取要修改的数据 -->
+		<action name="userAction2" class="userAction">
+			<result>/updatePersonalMessage.jsp</result>
+		</action>
+
+		<action name="userAction3" class="userAction">
+			<result>/updateUserPass.jsp</result>
+		</action>
+	
+		<action name="userAction4" class="userAction">
+			<result>/welcome.jsp</result>
+		</action>
+
+		<!-- 修改数据并获取修改后的数据 -->
+		<action name="updatePersonalMessage" class="updateUserAction">
+			<result>/personalMessage.jsp</result>
+		</action>
+
+ 		<action name="updatePersonalMessage1" class="updateUserAction" method="updateUserPass">
+			<result>/index.jsp</result>
+		</action>
+
+
+		<!-- 通讯录 -->
+		<action name="addressListAction" class="getAll">
+			<result>/addressListMessage.jsp</result>
+		</action>
+		
+		<action name="query" class="queryAction">
+			<result>/addressListMessage.jsp</result>
+		</action>
+		
+		
+		<!-- 日程管理 -->
+		
+		<!-- 显示所有 -->
+		<action name="scheduleAction" class="scheduleAction">
+			<result>/scheduleMessage.jsp</result>
+		</action>
+		<!-- 查询 -->
+		<action name="scheduleQuery" class="scheduleQueryAction">
+			<result>/scheduleMessage.jsp</result>
+		</action>
+		<!-- 删除 -->
+		<action name="deleteSchedule" class="deleteSchedule">
+			<result type="chain" name="success">scheduleAction</result>
+		</action>
+		<!-- 添加 -->
+		<action name="insertSchedule" class="insertSchedule">
+			<result type="chain" name="success">scheduleAction</result>
+		</action>
+		<!-- 修改 -->
+		<action name="updateSchedule1" class="updateSchedule1">
+			<result>/updateSchedule.jsp</result>
+		</action>
+		<action name="updateSchedule2" class="updateSchedule2">
+			<result type="chain" name="success">scheduleAction</result>			
+		</action>
+		
+		
+		
+		
+		
+		
+		<!-- 文件管理 -->
+		<action name="upload" class="fileAction.UploadFileAction">
+			<interceptor-ref name="fileUpload">
+				<param name="maximumSize">1000</param>
+				<param name="allowedExtensions">jpg,jpeg,txt,xml,gif,png</param>
+			</interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<result>/uploadSuccess.jsp</result>
+			<result name="input">/uploadError.jsp</result>
+		</action>
+		
+		
+	</package>
+</struts>	

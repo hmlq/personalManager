@@ -1,0 +1,16 @@
+eclipse.preferences.version=1
+encoding//WebRoot/META-INF=UTF-8
+encoding//WebRoot/WEB-INF=UTF-8
+encoding//src/action=UTF-8
+encoding//src/action/RegisterAction.java=UTF-8
+encoding//src/action/UpdateUserAction.java=UTF-8
+encoding//src/action/UserAction.java=UTF-8
+encoding//src/pojo=UTF-8
+encoding//src/pojo/Filemanage.java=UTF-8
+encoding//src/pojo/Schedule.java=UTF-8
+encoding//src/pojo/User.java=UTF-8
+encoding//src/service=UTF-8
+encoding//src/service/LoginService.java=UTF-8
+encoding//src/service/LoginServiceImpl.java=UTF-8
+encoding//src/service/RegisterService.java=UTF-8
+encoding/WebRoot=UTF-8

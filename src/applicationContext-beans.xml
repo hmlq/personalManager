@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:aop="http://www.springframework.org/schema/aop"
+        xmlns:tx="http://www.springframework.org/schema/tx" 
+        xsi:schemaLocation="
+        http://www.springframework.org/schema/beans 
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/tx 
+        http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/aop 
+        http://www.springframework.org/schema/aop/spring-aop.xsd"> 
+        
+   	<!-- bean definitions here -->
+   	<bean id="user" class="pojo.User"></bean>
+   	<bean id="loginServiceImpl" class="service.LoginServiceImpl">
+   		<property name="sessionFactory" ref="sessionFactory"></property>
+   	</bean>
+   	<bean id="registerServiceImpl" class="service.RegisterServiceImpl">
+   		<property name="sessionFactory" ref="sessionFactory"></property>   	
+   	</bean>
+   	<bean id="userServiceImpl" class="service.UserServiceImpl">
+   		<property name="sessionFactory" ref="sessionFactory"></property>   	
+   	</bean>
+   	<bean id="updateUserServiceImpl" class="service.UpdateUserServiceImpl">
+   		<property name="sessionFactory" ref="sessionFactory"></property>   	   	
+   	</bean>
+   	<bean id="loginAction" class="action.LoginAction" scope="prototype">
+   		<property name="user" ref="user"></property>
+   		<property name="loginService" ref="loginServiceImpl"></property>
+   	</bean>
+   	<bean id="registerAction" class="action.RegisterAction" scope="prototype">
+   		<property name="user" ref="user"></property>
+   		<property name="registerService" ref="registerServiceImpl"></property>
+   	</bean>
+   	<bean id="userAction" class="action.UserAction" scope="prototype">
+   		<property name="user" ref="user"></property>
+   		<property name="userService" ref="userServiceImpl"></property>
+   	</bean>
+   	<bean id="updateUserAction" class="action.UpdateUserAction" scope="prototype">
+   		<property name="user" ref="user"></property>
+   		<property name="user1" ref="user"></property>
+   		<property name="userService" ref="userServiceImpl"></property>
+   		<property name="updateUserService" ref="updateUserServiceImpl"></property>
+   	</bean>
+   	
+   	
+   	
+   	<!-- 通讯录 -->
+   	<bean id="addresslist" class="pojo.Addresslist"></bean>
+   	<bean id="getAllMessageImpl" class="addressListService.GetAllMessageImpl">
+   		<property name="sessionFactory" ref="sessionFactory"></property>
+   	</bean>
+   	<bean id="queryServiceImpl" class="addressListService.QueryServiceImpl">
+   		<property name="sessionFactory" ref="sessionFactory"></property>   	
+   	</bean>
+   	<bean id="getAll" class="addressListAction.GetAllAction" scope="prototype">
+   		<property name="getAllMessage" ref="getAllMessageImpl"></property>
+   	</bean>
+   	<bean id="queryAction" class="addressListAction.QueryAction" scope="prototype">
+   		<property name="queryService" ref="queryServiceImpl"></property>
+   	</bean>
+   
+   
+   
+   	<!-- 日程管理 -->
+   	<bean id="schedule" class="pojo.Schedule"></bean>
+   	<bean id="getAllServiceImpl" class="scheduleService.GetAllServiceImpl">   		
+   		<property name="sessionFactory" ref="sessionFactory"></property>   	
+   	</bean>
+   	<bean id="scheduleQueryServiceImpl" class="scheduleService.ScheduleQueryServiceImpl">
+   		<property name="sessionFactory" ref="sessionFactory"></property>   	
+   	</bean>
+   	<bean id="scheduleDeleteServiceImpl" class="scheduleService.ScheduleDeleteServiceImpl">
+   		<property name="sessionFactory" ref="sessionFactory"></property>   	
+   	</bean>
+   	<bean id="insertScheduleServiceImpl" class="scheduleService.InsertScheduleServiceImpl">
+   		<property name="sessionFactory" ref="sessionFactory"></property>   	
+   	</bean>
+   	<bean id="scheduleUpdateServiceImpl" class="scheduleService.ScheduleUpdateServeiceImpl">
+   		<property name="sessionFactory" ref="sessionFactory"></property>   	
+   	</bean>
+   	<bean id="scheduleAction" class="scheduleAction.ScheduleAction" scope="prototype">
+   		<property name="getAllService" ref="getAllServiceImpl"></property>
+   	</bean>
+   	<bean id="scheduleQueryAction" class="scheduleAction.ScheduleQueryAction" scope="prototype">
+   		<property name="scheduleQueryService" ref="scheduleQueryServiceImpl"></property>
+   	</bean>
+   	<bean id="deleteSchedule" class="scheduleAction.DeleteSchedule" scope="prototype">
+   		<property name="scheduleDeleteService" ref="scheduleDeleteServiceImpl"></property>
+   	</bean>
+   	<bean id="insertSchedule" class="scheduleAction.InsertSchedule" scope="prototype">
+   		<property name="insertScheduleService" ref="insertScheduleServiceImpl"></property>
+   		<property name="schedule" ref="schedule"></property>
+   	</bean>	
+   	<bean id="updateSchedule1" class="scheduleAction.UpdateSchedule1" scope="prototype">   	
+   		<property name="schedule" ref="schedule"></property>
+   		<property name="scheduleQueryService" ref="scheduleQueryServiceImpl"></property>
+   	</bean>
+   	<bean id="updateSchedule2" class="scheduleAction.UpdateSchedule2" scope="prototype">
+   		<property name="schedule" ref="schedule"></property>
+   		<property name="scheduleUpdateServeice" ref="scheduleUpdateServiceImpl"></property>
+   	</bean>
+   	
+</beans>
